@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gradient Animations</title>
+    <style>
+      body {
+        background-size: 400% 400% !important;
+        animation: gradient 15s ease infinite;
+        height: 100vh;
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    </style>
+  </head>
+  <body id="body-bg">
+    <div>
+      <form onsubmit="return false">
+        <input
+          type="text"
+          required
+          id="first-color"
+          placeholder="First Color (#000000)"
+        />
+        <input
+          type="text"
+          required
+          id="second-color"
+          placeholder="Second Color (#000000)"
+        />
+        <button onclick="applyGradient()" type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+  <script>
+    function applyGradient() {
+      const firstColor = document.getElementById("first-color").value;
+      const secondColor = document.getElementById("second-color").value;
+      document.getElementById(
+        "body-bg"
+      ).style.background = `linear-gradient(-45deg, ${firstColor},${secondColor}, ${secondColor}, ${firstColor})`;
+    }
+  </script>
+</html>
